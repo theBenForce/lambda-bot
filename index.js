@@ -4,31 +4,31 @@ const bodyParser = require('body-parser');
 const serverlessExpress = require('aws-serverless-express');
 const ApiAiApp = require('actions-on-google').ApiAiApp;
 
-const lambdaBot = function() {
-    var obj = Object.create(lambdaBot.prototype);
+class LambdaBot {
+    constructor() {
+        this.actionsMap = new Map();
 
-    obj.app = express();
-    obj.app.use(bodyParser.urlencoded({extended: false}));
-    obj.app.use(bodyParser.json());
+        this.app = express();
+        this.app.use(bodyParser.urlencoded({extended: false}));
+        this.app.use(bodyParser.json());
 
-    obj.actionsMap = new Map();
+        this.app.post('/', (req, res) => this._runApp(req, res));
 
-    obj.app.post('/', obj.runApp.bind(obj));
+        this.server = serverlessExpress.createServer(this.app);
+    }
 
-    obj.server = serverlessExpress.createServer(obj.app);
+    setAction(action, handler) {
+        this.actionsMap.set(action, handler);
+    }
 
-    return obj;
+    _runApp(request, response) {
+        var app = new ApiAiApp({request, response});
+        app.handleRequest(this.actionsMap);
+    }
+
+    handler(event, context) {
+        serverlessExpress.proxy(this.server, event, context);
+    }
 }
 
-lambdaBot.prototype.setAction = (action, handler) => 
-    this.actionsMap.set(action, handler);
-
-lambdaBot.prototype.runApp = (request, response) => {
-    var app = new ApiAiApp({request, response});
-    app.handleRequest(this.actionsMap);
-};
-
-lambdaBot.prototype.handler = (event, context) => 
-    serverlessExpress.proxy(this.server, event, context);
-
-module.exports = lambdaBot;
+module.exports = LambdaBot;
