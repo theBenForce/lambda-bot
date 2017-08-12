@@ -1,0 +1,37 @@
+{
+  "name": "lambda-bot",
+  "version": "1.0.0",
+  "description": "A wrapper to make API.AI webhooks on AWS Lambda.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blforce/lambda-bot.git"
+  },
+  "keywords": [
+    "lambda",
+    "aws",
+    "apiai",
+    "actions",
+    "on",
+    "google",
+    "aws",
+    "lambda",
+    "nodejs",
+    "express"
+  ],
+  "author": "Ben Force",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blforce/lambda-bot/issues"
+  },
+  "homepage": "https://github.com/blforce/lambda-bot#readme",
+  "dependencies": {
+    "actions-on-google": "^1.2.0",
+    "aws-serverless-express": "^3.0.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  }
+}
