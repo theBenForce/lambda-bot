@@ -9,7 +9,7 @@ const LambdaBot = require('lambda-bot');
 const bot = LambdaBot();
 
 bot.setAction('hello.world', (app) => {
-    app.tell('Hello from <%= name %>!');
+    app.tell('Hello from AWS Lambda!');
 });
 
 exports.handler = bot.handler;
