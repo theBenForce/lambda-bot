@@ -6,7 +6,7 @@ Here's a simple example:
 ```javascript
 const LambdaBot = require('lambda-bot');
 
-const bot = LambdaBot();
+const bot = new LambdaBot();
 
 bot.setAction('hello.world', (app) => {
     app.tell('Hello from AWS Lambda!');
