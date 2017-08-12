@@ -1,6 +1,6 @@
 {
   "name": "lambda-bot",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "description": "A wrapper to make API.AI webhooks on AWS Lambda.",
   "main": "index.js",
   "scripts": {
