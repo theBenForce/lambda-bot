@@ -12,5 +12,5 @@ bot.setAction('hello.world', (app) => {
     app.tell('Hello from AWS Lambda!');
 });
 
-exports.handler = bot.handler;
+exports.handler = bot.handler();
 ```

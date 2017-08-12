@@ -26,8 +26,11 @@ class LambdaBot {
         app.handleRequest(this.actionsMap);
     }
 
-    handler(event, context) {
-        serverlessExpress.proxy(this.server, event, context);
+    handler() {
+        var server = this.server;
+        return function(event, context) {
+            serverlessExpress.proxy(server, event, context);
+        }
     }
 }
 
