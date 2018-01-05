@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const serverlessExpress = require('aws-serverless-express');
-const ApiAiApp = require('actions-on-google').ApiAiApp;
+const DialogflowApp = require('actions-on-google').DialogflowApp;
 
 class LambdaBot {
     constructor() {
@@ -22,7 +22,7 @@ class LambdaBot {
     }
 
     _runApp(request, response) {
-        var app = new ApiAiApp({request, response});
+        var app = new DialogflowApp({request, response});
         app.handleRequest(this.actionsMap);
     }
 
